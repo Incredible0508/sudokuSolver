@@ -50,7 +50,7 @@ function App() {
         
         {/* Left Column */}
         <div className="flex-1 max-w-sm pt-4">
-          <h4 className="text-5xl sm:text-6xl font-extrabold text-white mb-8 tracking-tight">Sudoku Solver</h4>
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-white mb-6 tracking-tight">Sudoku Solver</h1>
           
           <p className="mb-4 text-base text-gray-300 leading-relaxed">
             This is a simple sudoku solver that implements a <span className="text-[#38bdf8] hover:underline cursor-pointer">backtracking algorithm</span> using JavaScript.
