@@ -45,11 +45,11 @@ function App() {
 
   return (
     <div className="min-h-screen bg-[#0f172a] text-gray-200 flex items-center justify-center p-6 font-sans antialiased">
-      <div className="max-w-4xl w-full flex flex-col md:flex-row gap-12 items-start justify-center">
+      {/* CHANGED: max-w-4xl to max-w-7xl, and gap-12 to gap-20 to give it breathing room */}
+      <div className="max-w-7xl w-full flex flex-col md:flex-row gap-20 items-start justify-center">
         
         {/* Left Column */}
         <div className="flex-1 max-w-sm pt-4">
-          {/* MUCH LARGER HEADING HERE */}
           <h1 className="text-5xl sm:text-6xl font-extrabold text-white mb-8 tracking-tight">Sudoku Solver</h1>
           
           <p className="mb-4 text-base text-gray-300 leading-relaxed">
