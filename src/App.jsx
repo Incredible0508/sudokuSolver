@@ -49,13 +49,14 @@ function App() {
         
         {/* Left Column */}
         <div className="flex-1 max-w-sm pt-4">
-          <h1 className="text-3xl font-bold text-white mb-6">Sudoku Solver</h1>
+          {/* MUCH LARGER HEADING HERE */}
+          <h1 className="text-5xl sm:text-6xl font-extrabold text-white mb-8 tracking-tight">Sudoku Solver</h1>
           
-          <p className="mb-4 text-sm text-gray-300 leading-relaxed">
+          <p className="mb-4 text-base text-gray-300 leading-relaxed">
             This is a simple sudoku solver that implements a <span className="text-[#38bdf8] hover:underline cursor-pointer">backtracking algorithm</span> using JavaScript.
           </p>
           
-          <p className="mb-8 text-sm text-gray-300 leading-relaxed">
+          <p className="mb-8 text-base text-gray-300 leading-relaxed">
             The frontend is made with HTML tables, Pico CSS, and Flexbox Grid. Boards are fetched using <span className="text-[#38bdf8] hover:underline cursor-pointer">dosoku api</span>
           </p>
           

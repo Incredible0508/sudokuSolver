@@ -15,7 +15,7 @@ export default function SudokuGrid({ board, initialBoard, onCellChange }) {
                 value={cell === 0 ? '' : cell}
                 onChange={(e) => onCellChange(rowIndex, colIndex, e.target.value)}
                 readOnly={isInitial}
-                className={`w-10 h-10 sm:w-12 sm:h-12 text-center text-xl sm:text-2xl font-sans font-medium outline-none bg-transparent cursor-default
+                className={`w-12 h-12 sm:w-16 sm:h-16 text-center text-2xl sm:text-4xl font-sans font-medium outline-none bg-transparent cursor-default
                   ${colIndex % 3 === 2 && colIndex !== 8 ? 'border-r-2 border-gray-400' : 'border-r border-gray-600'}
                   ${isInitial ? 'text-[#38bdf8]' : 'text-white'}
                 `}
