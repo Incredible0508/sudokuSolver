@@ -1,16 +1,26 @@
-# React + Vite
+# React Sudoku Solver & Generator
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A lightning-fast Sudoku solver and puzzle generator built with React and Tailwind CSS. This project features a custom recursive backtracking algorithm that can solve any valid Sudoku puzzle in milliseconds.
 
-Currently, two official plugins are available:
+## Features
+* **Backtracking Engine**: Instantly solves any valid board state.
+* **Dynamic Puzzle Generation**: Creates unique, playable puzzles on the fly.
+* **Difficulty Levels**: Choose between Easy, Medium, and Hard (adjusts the number of missing clues).
+* **Manual Entry Mode**: Clear the board and input puzzles from real life to have the algorithm solve them for you.
+* **Responsive UI**: Built with Tailwind CSS for a clean, modern experience on desktop and mobile.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Tech Stack
+* React
+* Vite
+* Tailwind CSS
 
-## React Compiler
+## How to Run Locally
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. Clone this repository.
+2. Install dependencies:
+   npm install
+3. Start the development server:
+   npm run dev
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Algorithm Details
+The core solver uses a Depth-First Search (DFS) recursive backtracking algorithm. It scans the 9x9 grid for empty cells, guesses a valid number (1-9) based on row/column/subgrid constraints, and recurses forward. If it hits a dead end, it backtracks, erasing incorrect guesses until the full board is successfully populated.
