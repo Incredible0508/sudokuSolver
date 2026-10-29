@@ -7,10 +7,10 @@ import { solveSudoku } from './solver';
 function App() {
   const [board, setBoard] = useState(Array(9).fill(null).map(() => Array(9).fill(0)));
   const [initialBoard, setInitialBoard] = useState(Array(9).fill(null).map(() => Array(9).fill(0)));
-  const [difficulty, setDifficulty] = useState('medium'); // Added back
+  const [difficulty, setDifficulty] = useState('medium');
 
   const startNewGame = () => {
-    const newPuzzle = generatePuzzle(difficulty); // Now uses the dropdown value
+    const newPuzzle = generatePuzzle(difficulty); 
     setBoard(newPuzzle.map(row => [...row]));
     setInitialBoard(newPuzzle.map(row => [...row]));
   };
@@ -21,7 +21,6 @@ function App() {
     setInitialBoard(empty); 
   };
 
-  // Automatically start a new game when difficulty changes
   useEffect(() => {
     startNewGame();
   }, [difficulty]);
@@ -45,7 +44,7 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0f172a] text-gray-200 flex items-center justify-center p-6">
+    <div className="min-h-screen bg-[#0f172a] text-gray-200 flex items-center justify-center p-6 font-sans antialiased">
       <div className="max-w-4xl w-full flex flex-col md:flex-row gap-12 items-start justify-center">
         
         {/* Left Column */}
@@ -76,9 +75,6 @@ function App() {
             initialBoard={initialBoard} 
             onCellChange={handleCellChange} 
           />
-          <p className="mt-4 text-[11px] text-gray-400 max-w-[350px] text-center">
-            You can also edit the board btw, just make sure you input valid values...
-          </p>
         </div>
 
       </div>
