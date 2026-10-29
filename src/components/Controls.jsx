@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function Controls({ onNewGame, onSolve, difficulty, setDifficulty }) {
+export default function Controls({ onNewGame, onSolve, onClear, difficulty, setDifficulty }) {
   return (
     <div className="flex flex-col items-center gap-4 mt-6">
       <div className="flex gap-4">
@@ -9,6 +9,12 @@ export default function Controls({ onNewGame, onSolve, difficulty, setDifficulty
           className="px-6 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-lg shadow-md transition-colors"
         >
           New Game
+        </button>
+        <button
+          onClick={onClear}
+          className="px-6 py-2 bg-rose-600 hover:bg-rose-500 text-white font-semibold rounded-lg shadow-md transition-colors"
+        >
+          Clear Board
         </button>
         <button
           onClick={onSolve}

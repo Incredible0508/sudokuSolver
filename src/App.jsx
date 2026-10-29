@@ -5,14 +5,21 @@ import { generatePuzzle } from './utils/generator';
 import { solveSudoku } from './solver';
 
 function App() {
-  const [board, setBoard] = useState(Array(9).fill(Array(9).fill(0)));
-  const [initialBoard, setInitialBoard] = useState(Array(9).fill(Array(9).fill(0)));
+  const [board, setBoard] = useState(Array(9).fill(null).map(() => Array(9).fill(0)));
+  const [initialBoard, setInitialBoard] = useState(Array(9).fill(null).map(() => Array(9).fill(0)));
   const [difficulty, setDifficulty] = useState('medium');
 
   const startNewGame = () => {
     const newPuzzle = generatePuzzle(difficulty);
     setBoard(newPuzzle.map(row => [...row]));
     setInitialBoard(newPuzzle.map(row => [...row]));
+  };
+
+  // Wipes the board clean and unlocks all cells for manual typing
+  const clearBoard = () => {
+    const empty = Array(9).fill(null).map(() => Array(9).fill(0));
+    setBoard(empty);
+    setInitialBoard(empty); 
   };
 
   useEffect(() => {
@@ -29,11 +36,12 @@ function App() {
   };
 
   const handleSolve = () => {
-    const solved = solveSudoku(initialBoard);
+    // Now passes the CURRENT board state instead of the locked initial board
+    const solved = solveSudoku(board); 
     if (solved) {
       setBoard(solved);
     } else {
-      alert("Error: Board state unsolvable.");
+      alert("Error: Board is unsolvable. Check for incorrect numbers!");
     }
   };
 
@@ -52,6 +60,7 @@ function App() {
       <Controls 
         onNewGame={startNewGame} 
         onSolve={handleSolve} 
+        onClear={clearBoard}
         difficulty={difficulty} 
         setDifficulty={setDifficulty} 
       />
