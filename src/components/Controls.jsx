@@ -2,34 +2,37 @@ import React from 'react';
 
 export default function Controls({ onNewGame, onSolve, onClear, difficulty, setDifficulty }) {
   return (
-    <div className="flex flex-col items-center gap-4 mt-6">
-      <div className="flex gap-4">
+    <div className="flex flex-col gap-4">
+      {/* Button Group */}
+      <div className="flex">
         <button
           onClick={onNewGame}
-          className="px-6 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold rounded-lg shadow-md transition-colors"
+          className="px-4 py-1.5 bg-[#0284c7] hover:bg-[#0369a1] text-white text-sm font-medium rounded-l transition-colors"
         >
-          New Game
-        </button>
-        <button
-          onClick={onClear}
-          className="px-6 py-2 bg-rose-600 hover:bg-rose-500 text-white font-semibold rounded-lg shadow-md transition-colors"
-        >
-          Clear Board
+          Generate
         </button>
         <button
           onClick={onSolve}
-          className="px-6 py-2 bg-emerald-600 hover:bg-emerald-500 text-white font-semibold rounded-lg shadow-md transition-colors"
+          title="Solve current board"
+          className="px-4 py-1.5 bg-[#0284c7] hover:bg-[#0369a1] text-white text-sm font-medium transition-colors border-l border-[#0369a1]"
         >
-          Solve for Me
+          Solve
+        </button>
+        <button
+          onClick={onClear}
+          className="px-4 py-1.5 bg-[#0284c7] hover:bg-[#0369a1] text-white text-sm font-medium rounded-r transition-colors border-l border-[#0369a1]"
+        >
+          Clear
         </button>
       </div>
 
-      <div className="flex items-center gap-2">
-        <span className="text-slate-300 font-medium">Difficulty:</span>
+      {/* Difficulty Selector */}
+      <div className="flex items-center gap-3">
+        <span className="text-sm text-gray-300">Difficulty:</span>
         <select
           value={difficulty}
           onChange={(e) => setDifficulty(e.target.value)}
-          className="bg-slate-700 text-white px-3 py-1 rounded-md border border-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+          className="bg-[#1e293b] text-sm text-white px-2 py-1 rounded border border-gray-600 focus:outline-none focus:border-[#38bdf8] cursor-pointer"
         >
           <option value="easy">Easy</option>
           <option value="medium">Medium</option>

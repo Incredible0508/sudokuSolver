@@ -7,21 +7,21 @@ import { solveSudoku } from './solver';
 function App() {
   const [board, setBoard] = useState(Array(9).fill(null).map(() => Array(9).fill(0)));
   const [initialBoard, setInitialBoard] = useState(Array(9).fill(null).map(() => Array(9).fill(0)));
-  const [difficulty, setDifficulty] = useState('medium');
+  const [difficulty, setDifficulty] = useState('medium'); // Added back
 
   const startNewGame = () => {
-    const newPuzzle = generatePuzzle(difficulty);
+    const newPuzzle = generatePuzzle(difficulty); // Now uses the dropdown value
     setBoard(newPuzzle.map(row => [...row]));
     setInitialBoard(newPuzzle.map(row => [...row]));
   };
 
-  // Wipes the board clean and unlocks all cells for manual typing
   const clearBoard = () => {
     const empty = Array(9).fill(null).map(() => Array(9).fill(0));
     setBoard(empty);
     setInitialBoard(empty); 
   };
 
+  // Automatically start a new game when difficulty changes
   useEffect(() => {
     startNewGame();
   }, [difficulty]);
@@ -36,7 +36,6 @@ function App() {
   };
 
   const handleSolve = () => {
-    // Now passes the CURRENT board state instead of the locked initial board
     const solved = solveSudoku(board); 
     if (solved) {
       setBoard(solved);
@@ -46,24 +45,43 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen bg-slate-800 flex flex-col items-center justify-center p-4">
-      <h1 className="text-4xl font-extrabold text-white tracking-wide mb-8">
-        Sudoku Solver
-      </h1>
-      
-      <SudokuGrid 
-        board={board} 
-        initialBoard={initialBoard} 
-        onCellChange={handleCellChange} 
-      />
-      
-      <Controls 
-        onNewGame={startNewGame} 
-        onSolve={handleSolve} 
-        onClear={clearBoard}
-        difficulty={difficulty} 
-        setDifficulty={setDifficulty} 
-      />
+    <div className="min-h-screen bg-[#0f172a] text-gray-200 flex items-center justify-center p-6">
+      <div className="max-w-4xl w-full flex flex-col md:flex-row gap-12 items-start justify-center">
+        
+        {/* Left Column */}
+        <div className="flex-1 max-w-sm pt-4">
+          <h1 className="text-3xl font-bold text-white mb-6">Sudoku Solver</h1>
+          
+          <p className="mb-4 text-sm text-gray-300 leading-relaxed">
+            This is a simple sudoku solver that implements a <span className="text-[#38bdf8] hover:underline cursor-pointer">backtracking algorithm</span> using JavaScript.
+          </p>
+          
+          <p className="mb-8 text-sm text-gray-300 leading-relaxed">
+            The frontend is made with HTML tables, Pico CSS, and Flexbox Grid. Boards are fetched using <span className="text-[#38bdf8] hover:underline cursor-pointer">dosoku api</span>
+          </p>
+          
+          <Controls 
+            onNewGame={startNewGame} 
+            onSolve={handleSolve} 
+            onClear={clearBoard}
+            difficulty={difficulty}
+            setDifficulty={setDifficulty}
+          />
+        </div>
+
+        {/* Right Column */}
+        <div className="flex flex-col items-center">
+          <SudokuGrid 
+            board={board} 
+            initialBoard={initialBoard} 
+            onCellChange={handleCellChange} 
+          />
+          <p className="mt-4 text-[11px] text-gray-400 max-w-[350px] text-center">
+            You can also edit the board btw, just make sure you input valid values...
+          </p>
+        </div>
+
+      </div>
     </div>
   );
 }
